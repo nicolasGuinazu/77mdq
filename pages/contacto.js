@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import {
   Button,
   Input,
   FormControl,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  NumberInput,
   FormLabel,
-  FormHelperText
+  useToast
 } from '@chakra-ui/react'
 export default function contacto() {
+  const toast = useToast()
+  const [inputs,setInputs]=useState({
+    name:'',
+    email:'',
+    phone:'',
+    company:'',
+    date:'',
+    paxAmmount:''
+  })
+
   const submitHandler= event =>{
     event.preventDefault()
+    toast({
+      title: 'Gracias por contactarnos!',
+      description: "Estamos procesando tu consulta y te responderemos a la brevedad",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+  }
+  const handleChange = e => {
+    setInputs(prevState=>({...prevState,[e.target.name]:e.target.value}))
+    console.log(e.target.value)
   }
   return (
     <div className={styles.main}>
@@ -23,30 +39,24 @@ export default function contacto() {
         <form onSubmit={submitHandler}>
       <FormControl>
   <FormLabel>Nombre y apellido</FormLabel>
-  <Input type='text' />
+  <Input type='text' value={inputs.name} onChange={handleChange} name="name"/>
   <FormLabel>Email</FormLabel>
-  <Input type='email' />
+  <Input type='email' value={inputs.email} onChange={handleChange} name="email"/>
   <FormLabel>Telefono</FormLabel>
-  <Input type='number' />
+  <Input type='number' value={inputs.phone} onChange={handleChange} name="phone"/>
   <FormLabel>Empresa</FormLabel>
-  <Input type='text' />
+  <Input type='text' value={inputs.company} onChange={handleChange} name="company"/>
   <FormLabel>Fecha de viaje </FormLabel>
-  <Input type='date' />
+  <Input type='date' value={inputs.date} onChange={handleChange} name="date" color={'white'}/>
   <FormLabel>Cantidad de personas</FormLabel>
-  <NumberInput max={50} min={10}>
-    <NumberInputField />
-    <NumberInputStepper>
-      <NumberIncrementStepper />
-      <NumberDecrementStepper />
-    </NumberInputStepper>
-  </NumberInput>
+  <Input type='number' value={inputs.paxAmmount} onChange={handleChange} name="paxAmmount"/>
   <div className={styles.submitButton}>
   <Button
             mt={4}
             colorScheme='whiteAlpha'
             type='submit'
           >
-            Submit
+            Enviar
           </Button>
 
   </div>
