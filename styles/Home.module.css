@@ -1,15 +1,14 @@
-
-.draw{
+.draw {
   display: flex;
 }
-.home{
+.home {
   color: #eaeaea;
   align-self: center;
- text-align: center;
+  text-align: center;
   flex-grow: 1;
   margin-right: 1em;
 }
-.banner{
+.banner {
   min-height: 100vh;
   animation: 1s ease-out 0s 1 slide;
 }
@@ -17,21 +16,18 @@
 @keyframes slide {
   0% {
     transform: translateX(-100%);
-}
-100% {
+  }
+  100% {
     transform: translateX(0);
-}
-
+  }
 }
 
 .container {
   background-color: #000;
   color: #fff;
-
 }
-.header{
-  background-color: #fff
-
+.header {
+  background-color: #fff;
 }
 .main {
   font-family: 'Roboto', sans-serif;
@@ -42,9 +38,8 @@
   flex-direction: column;
   align-items: center;
   background-color: #000;
-
 }
-.serviceContainer{
+.serviceContainer {
   background-color: #ccc;
   width: 100%;
   text-align: center;
@@ -57,8 +52,6 @@
   border-top: 1px solid #ccc;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .footer a {
@@ -102,18 +95,23 @@ h2.title {
   font-size: 1.5rem;
 }
 
-.contactForm{
+.contactForm {
   background-color: #ccc;
   width: 100%;
 }
-
-.submitButton{
+.contact {
+  width: 90%;
+  margin: 1rem auto;
+}
+.submitButton {
   text-align: center;
 }
-.FormControl{
-  margin:1rem 1rem
+.FormControl {
+  margin: 1rem 1rem;
 }
-
+.error {
+  color: red;
+}
 .grid {
   display: flex;
   align-items: center;
@@ -122,67 +120,64 @@ h2.title {
   max-width: 800px;
 }
 
-
 .logo {
   height: 1em;
   margin-left: 0.5rem;
 }
-.social{
+.social {
   text-align: center;
   width: 100%;
 }
-.containner{
+.containner {
   margin-top: 1rem;
   width: 200px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -1px 5px 15px black;
-
 }
 
 /*Area of images*/
-.wrapper{
+.wrapper {
   width: 100%;
   display: flex;
   animation: slide 16s infinite;
 }
 
-.wrapper img{
+.wrapper img {
   width: 100%;
 }
 /*Animation activated by keyframes*/
-@keyframes slide{
-  0%{
-      transform: translateX(0);
+@keyframes slide {
+  0% {
+    transform: translateX(0);
   }
-  25%{
-      transform: translateX(0);
+  25% {
+    transform: translateX(0);
   }
-  30%{
-      transform: translateX(-100%);
+  30% {
+    transform: translateX(-100%);
   }
-  50%{
-      transform: translateX(-100%);
+  50% {
+    transform: translateX(-100%);
   }
-  55%{
-      transform: translateX(-200%);
+  55% {
+    transform: translateX(-200%);
   }
-  75%{
-      transform: translateX(-200%);
+  75% {
+    transform: translateX(-200%);
   }
-  80%{
-      transform: translateX(-300%);
+  80% {
+    transform: translateX(-300%);
   }
-  100%{
-      transform: translateX(-300%);
+  100% {
+    transform: translateX(-300%);
   }
 }
 
-
-.draweritem{
+.draweritem {
   border-bottom: 1px solid #ccc;
   width: 70%;
-  margin-top: 0.5rem ;
+  margin-top: 0.5rem;
 }
 @media (min-width: 1000px) {
   .draw {
@@ -196,4 +191,3 @@ h2.title {
     flex-direction: column;
   }
 }
-
