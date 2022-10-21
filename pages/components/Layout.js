@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css';
-import logo from '../../public/download.png'
-import Image from 'next/image'
+import logo from '../../public/download.png';
+import Image from 'next/image';
 import {
   Drawer,
   DrawerBody,
@@ -13,8 +13,8 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { SocialIcon } from 'react-social-icons';
-import React from 'react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import React, { useEffect, useState } from 'react';
+import { HamburgerIcon,ArrowUpIcon } from '@chakra-ui/icons';
 
 function SideDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,12 +51,10 @@ function SideDrawer() {
             <p onClick={onClose} className={styles.draweritem}>
               <Link href="/servicios">Servicios</Link>
             </p>
-           <p onClick={onClose} className={styles.draweritem}>
-
+            <p onClick={onClose} className={styles.draweritem}>
               <Link href="/contacto">Contacto</Link>
             </p>
-           <p onClick={onClose} className={styles.draweritem}>
-
+            <p onClick={onClose} className={styles.draweritem}>
               <Link href="/nosotros">Nosotros</Link>
             </p>
           </DrawerBody>
@@ -66,34 +64,71 @@ function SideDrawer() {
   );
 }
 export default function Layout({ children }) {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollUpHandler = e => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
   return (
     <>
       <header className={styles.header}>
         <div className={styles.draw}>
-
           <SideDrawer />
           <div className={styles.home}>
-          <Link href='/'>
-          <Image
-      src={logo}
-      alt="Picture of the author"
-      width="100px"
-      height="50px"
-    />
-          </Link>
-         </div>
+            <Link href="/">
+              <Image
+                src={logo}
+                alt="Picture of the author"
+                width="100px"
+                height="50px"
+              />
+            </Link>
+          </div>
         </div>
       </header>
       <div className={styles.container}>
         {children}
+
         <footer className={styles.footer}>
-        <div className={styles.social}>
-          <SocialIcon url='https://facebook.com' fgColor={"white"} style={{ height: 35, width: 35 , margin:"1rem"}}/>
-          <SocialIcon url='https://instagram.com' fgColor={"white"} bgColor={"#9342f5"} style={{ height: 35, width: 35,margin:"1rem" }}/>
-          <SocialIcon url='https://whatsapp.com' fgColor={"white"} style={{ height: 35, width: 35, margin:"1rem" }}/>
-        </div>
+          <div className={styles.social}>
+            <SocialIcon
+              url="https://facebook.com"
+              fgColor={'white'}
+              style={{ height: 35, width: 35, margin: '1rem' }}
+            />
+            <SocialIcon
+              url="https://instagram.com"
+              fgColor={'white'}
+              bgColor={'#9342f5'}
+              style={{ height: 35, width: 35, margin: '1rem' }}
+            />
+            <SocialIcon
+              url="https://whatsapp.com"
+              fgColor={'white'}
+              style={{ height: 35, width: 35, margin: '1rem' }}
+            />
+          </div>
           <div className={styles.logo}>Made with ❤️ by MCG</div>
         </footer>
+        <div className={styles.floatButton}>
+          <SocialIcon
+            url="https://whatsapp.com"
+            fgColor={'white'}
+            style={{ height: 35, width: 35, margin: '1rem' }}
+          />
+        </div>
+        {offset ? <div className={styles.floatButtonLeft} onClick={scrollUpHandler} > <IconButton icon={<ArrowUpIcon />} isRound   colorScheme='black'   variant='outline' /> </div> : ''}
       </div>
     </>
   );

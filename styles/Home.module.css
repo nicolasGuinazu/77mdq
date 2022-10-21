@@ -109,6 +109,18 @@ h2.title {
 .FormControl {
   margin: 1rem 1rem;
 }
+.floatButton{
+
+  position: fixed;
+  bottom: 5vw;
+  right: 3vw;
+}
+.floatButtonLeft{
+
+  position: fixed;
+  bottom: 5vw;
+  left: 3vw;
+}
 .error {
   color: red;
 }
