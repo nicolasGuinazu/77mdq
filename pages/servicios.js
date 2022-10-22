@@ -6,7 +6,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFileProtect } from "react-icons/ai";
 export default function servicios() {
   return (
-    <div className={styles.main}>
+    <div className={styles.mainService}>
       <h1 className={styles.titleService}>Servicios</h1>
       <div className={styles.serviceContainer}>
         <section>

@@ -1,38 +1,39 @@
-import React, { useState } from 'react';
-import styles from '../../styles/Home.module.css';
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import styles from "../../styles/Home.module.css";
 import {
   Button,
   Input,
-  FormErrorMessage,
   FormControl,
   FormLabel,
   useToast,
-} from '@chakra-ui/react';
-export default function Contacto() {
+} from "@chakra-ui/react";
+export default function Contacto({ contactPage }) {
   const toast = useToast();
+  const router = useRouter();
+  const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
   const [inputs, setInputs] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    date: '',
-    paxAmmount: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    date: "",
+    paxAmmount: "",
   });
 
   const submitHandler = (e) => {
     let err = {};
     e.preventDefault();
     for (let key in inputs) {
-      if (inputs[key] == '') {
-        if (Object.keys(inputs).includes(key) && key != 'company') {
-          err[key] = 'required';
+      if (inputs[key] == "") {
+        if (Object.keys(inputs).includes(key) && key != "company") {
+          err[key] = "required";
         }
       } else {
-        err[key] = '';
+        err[key] = "";
       }
     }
-
 
     const isvalidLenght = (value, limit) => {
       return value < limit;
@@ -40,12 +41,12 @@ export default function Contacto() {
 
     if (inputs.name) {
       if (
-        !inputs.name.match(/^[A-Za-z]+$/) ||
-        !isvalidLenght(inputs.name.length, 30)
+        !inputs.name.match(/^[A-Za-zñáéíóúü\s]*$/) ||
+        !isvalidLenght(inputs.name.length, 40)
       ) {
-        err['name'] = 'ingrese nombre valido';
+        err["name"] = "ingrese nombre valido";
       } else {
-        err['name'] = '';
+        err["name"] = "";
       }
     }
     //email
@@ -58,9 +59,9 @@ export default function Contacto() {
           );
       };
       if (!validateEmail(inputs.email)) {
-        err['email'] = 'ingrese mail valido';
+        err["email"] = "ingrese mail valido";
       } else {
-        err['email'] = '';
+        err["email"] = "";
       }
     }
 
@@ -74,43 +75,55 @@ export default function Contacto() {
           );
       };
       if (!validateNumber(inputs.phone)) {
-        err['phone'] = 'ingrese numero valido';
+        err["phone"] = "ingrese numero valido";
       } else {
-        err['phone'] = '';
+        err["phone"] = "";
       }
     }
 
     if (inputs.date) {
       let date = new Date();
-      if (inputs.date < date.toISOString().split('T')[0]) {
-        err['date'] = 'ingrese fecha valida';
+      if (inputs.date < date.toISOString().split("T")[0]) {
+        err["date"] = "ingrese fecha valida";
       } else {
-        err['date'] = '';
+        err["date"] = "";
       }
     }
     if (inputs.paxAmmount) {
       if (e.target.value < 1) {
-        err['paxAmmount'] = 'el minimo es ...';
+        err["paxAmmount"] = "el minimo es ...";
       } else {
-        err['paxAmmount'] = '';
+        err["paxAmmount"] = "";
       }
     }
-    let count=0
+    let count = 0;
     for (let er in err) {
-      if (err[er] != '') {
-        count++
+      if (err[er] != "") {
+        count++;
       }
-
     }
-    if (count==0) {
+    if (count == 0 && !sent) {
       toast({
-        title: 'Gracias por contactarnos!',
+        title: "Gracias por contactarnos!",
         description:
-          'Estamos procesando tu consulta y te responderemos a la brevedad',
-        status: 'success',
+          "Estamos procesando tu consulta y te responderemos a la brevedad",
+        status: "success",
         duration: 9000,
         isClosable: true,
       });
+      setSent(true);
+      if (contactPage) {
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }, 1000);
+      }
     } else {
       setErrors(err);
     }
@@ -128,20 +141,20 @@ export default function Contacto() {
     };
 
     //name
-    if (e.target.name == 'name') {
-      if(e.target.value.trim()==''){
-        err[e.target.name] = 'required';
-      }else   if (
-        !e.target.value.match(/^[A-Za-z]+$/) ||
+    if (e.target.name == "name") {
+      if (e.target.value.trim() == "") {
+        err[e.target.name] = "required";
+      } else if (
+        !e.target.value.match(/^[A-Za-zñáéíóúü\s]*$/) ||
         !isvalidLenght(e.target.value.length, 30)
       ) {
-        err[e.target.name] = 'ingrese nombre valido';
+        err[e.target.name] = "ingrese nombre valido";
       } else {
-        err[e.target.name] = '';
+        err[e.target.name] = "";
       }
     }
     //email
-    if (e.target.name == 'email') {
+    if (e.target.name == "email") {
       const validateEmail = (email) => {
         return String(email)
           .toLowerCase()
@@ -149,16 +162,16 @@ export default function Contacto() {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           );
       };
-      if(e.target.value.trim()==''){
-        err[e.target.name] = 'required';
-      }else if (!validateEmail(e.target.value)) {
-        err[e.target.name] = 'Ingrese un email valido';
+      if (e.target.value.trim() == "") {
+        err[e.target.name] = "required";
+      } else if (!validateEmail(e.target.value)) {
+        err[e.target.name] = "Ingrese un email valido";
       } else {
-        err[e.target.name] = '';
+        err[e.target.name] = "";
       }
     }
 
-    if (e.target.name == 'phone') {
+    if (e.target.name == "phone") {
       const validateNumber = (number) => {
         return String(number)
           .toLowerCase()
@@ -166,29 +179,28 @@ export default function Contacto() {
             /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/
           );
       };
-      if(e.target.value.trim()==''){
-        err[e.target.name] = 'required';
-      }else
-      if (!validateNumber(e.target.value)) {
-        err[e.target.name] = 'Ingrese un telefono valido';
+      if (e.target.value.trim() == "") {
+        err[e.target.name] = "required";
+      } else if (!validateNumber(e.target.value)) {
+        err[e.target.name] = "Ingrese un telefono valido";
       } else {
-        err[e.target.name] = '';
+        err[e.target.name] = "";
       }
     }
 
-    if (e.target.name == 'date') {
+    if (e.target.name == "date") {
       let date = new Date();
-      if (e.target.value < date.toISOString().split('T')[0]) {
-        err['date'] = 'ingrese fecha valida';
+      if (e.target.value < date.toISOString().split("T")[0]) {
+        err["date"] = "ingrese fecha valida";
       } else {
-        err['date'] = '';
+        err["date"] = "";
       }
     }
-    if (e.target.name == 'paxAmmount') {
+    if (e.target.name == "paxAmmount") {
       if (e.target.value < 1) {
-        err['paxAmmount'] = 'el minimo es ...';
+        err["paxAmmount"] = "el minimo es ...";
       } else {
-        err['paxAmmount'] = '';
+        err["paxAmmount"] = "";
       }
     }
     setErrors((prevState) => ({ ...prevState, ...err }));
@@ -205,10 +217,10 @@ export default function Contacto() {
           onBlur={handleFocus}
           name="name"
         />
-        {errors && errors.name == 'required' && (
+        {errors && errors.name == "required" && (
           <p className={styles.error}>Ingrese un nombre</p>
         )}
-        {errors && errors.name == 'ingrese nombre valido' && (
+        {errors && errors.name == "ingrese nombre valido" && (
           <p className={styles.error}>{errors.name}</p>
         )}
 
@@ -220,10 +232,10 @@ export default function Contacto() {
           onBlur={handleFocus}
           name="email"
         />
-        {errors && errors.email == 'required' && (
+        {errors && errors.email == "required" && (
           <p className={styles.error}>Ingrese un email</p>
         )}
-        {errors && errors.email != 'required' && (
+        {errors && errors.email != "required" && (
           <p className={styles.error}>{errors.email}</p>
         )}
         <FormLabel>Telefono *</FormLabel>
@@ -235,10 +247,10 @@ export default function Contacto() {
           onBlur={handleFocus}
           name="phone"
         />
-        {errors && errors.phone == 'required' && (
+        {errors && errors.phone == "required" && (
           <p className={styles.error}>Ingrese un telefono</p>
         )}
-        {errors && errors.phone != 'required' && (
+        {errors && errors.phone != "required" && (
           <p className={styles.error}>{errors.phone}</p>
         )}
         <FormLabel>Empresa</FormLabel>
@@ -257,12 +269,12 @@ export default function Contacto() {
           onChange={handleChange}
           onBlur={handleFocus}
           name="date"
-          color={'white'}
+          color={"white"}
         />
-        {errors && errors.date == 'required' && (
+        {errors && errors.date == "required" && (
           <p className={styles.error}>Ingrese una fecha</p>
         )}
-        {errors && errors.date != 'required' && (
+        {errors && errors.date != "required" && (
           <p className={styles.error}>{errors.date}</p>
         )}
         <FormLabel>Cantidad de personas *</FormLabel>
@@ -274,14 +286,14 @@ export default function Contacto() {
           onBlur={handleFocus}
           name="paxAmmount"
         />
-        {errors && errors.paxAmmount == 'required' && (
+        {errors && errors.paxAmmount == "required" && (
           <p className={styles.error}>Ingrese la cantidad de pasajeros</p>
         )}
-        {errors && errors.paxAmmount != 'required' && (
+        {errors && errors.paxAmmount != "required" && (
           <p className={styles.error}>{errors.paxAmmount}</p>
         )}
         <div className={styles.submitButton}>
-          <Button mt={4} colorScheme="green" type="submit" isDisabled={Object.keys(errors).length !== 0}>
+          <Button mt={4} colorScheme="green" type="submit">
             Enviar
           </Button>
         </div>

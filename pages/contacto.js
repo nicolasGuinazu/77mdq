@@ -6,7 +6,7 @@ export default function contacto() {
     <div className={styles.main}>
       <h1 className={styles.contactTitle}>Contacto</h1>
       <div className={styles.FormControl}>
-        <Contacto />
+        <Contacto contactPage={true}/>
       </div>
     </div>
   );

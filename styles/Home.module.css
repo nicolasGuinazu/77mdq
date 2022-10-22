@@ -39,6 +39,9 @@
   0% {opacity:0;}
   100% {opacity:1;}
 }
+.banner img{
+  max-width: 100%;
+}
 .container {
   background-color: #000;
   color: #fff;
@@ -56,10 +59,13 @@
   align-items: center;
   background-color: #000;
 }
+.mainService {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000;
+}
 .serviceContainer {
-/*   background-image:url("https://static5.depositphotos.com/1000847/395/i/450/depositphotos_3957067-stock-photo-bus-in-motion-monohromatic.jpg");
-  background-size: cover;
-  opacity: 0.8; */
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   width: 100%;
   border-radius: 0.5rem;
@@ -137,9 +143,14 @@
   line-height: 1.15;
   font-size: 3rem;
 }
-
+.about{
+text-align: justify;
+font-size: 1rem;
+padding: 1rem;
+}
 .titleService {
-  margin-top: 1rem;
+  padding-top: 1rem;
+  text-align: center;
   line-height: 1.15;
   font-size: 3rem;
 }
