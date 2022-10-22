@@ -125,10 +125,10 @@ export default function Layout({ children }) {
           <SocialIcon
             url="https://whatsapp.com"
             fgColor={'white'}
-            style={{ height: 35, width: 35, margin: '1rem' }}
+            style={{ height: 45, width: 45, margin: 0 }}
           />
         </div>
-        {offset ? <div className={styles.floatButtonLeft} onClick={scrollUpHandler} > <IconButton icon={<ArrowUpIcon />} isRound   colorScheme='black'   variant='outline' /> </div> : ''}
+        {offset ? <div className={styles.floatButtonLeft} onClick={scrollUpHandler} > <IconButton icon={<ArrowUpIcon />} isRound size={'md'} colorScheme='black'   variant='outline' /> </div> : ''}
       </div>
     </>
   );
