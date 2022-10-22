@@ -8,6 +8,9 @@
   flex-grow: 1;
   margin-right: 1em;
 }
+.header nav{
+  display: none;
+}
 .banner {
   animation: fadeIn ease 5s;
   -webkit-animation: fadeIn ease 10s;
@@ -277,6 +280,32 @@ h2.title {
   .draw {
     display: none;
   }
+
+  header.header nav{
+    display: block;
+    padding: 0.1rem;
+  }
+  header.header nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .header nav ul li{
+    background-color: white;
+    list-style: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 1s ease-in;
+
+  }
+  .header nav ul li:hover{
+    opacity: 1;
+  }
+  div.banner{
+display: flex;
+justify-content: center;  }
 }
 
 @media (max-width: 600px) {

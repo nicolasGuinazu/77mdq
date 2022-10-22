@@ -1,6 +1,6 @@
-import styles from '../../styles/Home.module.css';
-import logo from '../../public/download.png';
-import Image from 'next/image';
+import styles from "../../styles/Home.module.css";
+import logo from "../../public/download.png";
+import Image from "next/image";
 import {
   Drawer,
   DrawerBody,
@@ -11,10 +11,10 @@ import {
   IconButton,
   useDisclosure,
   Link,
-} from '@chakra-ui/react';
-import { SocialIcon } from 'react-social-icons';
-import React, { useEffect, useState } from 'react';
-import { HamburgerIcon,ArrowUpIcon } from '@chakra-ui/icons';
+} from "@chakra-ui/react";
+import { SocialIcon } from "react-social-icons";
+import React, { useEffect, useState } from "react";
+import { HamburgerIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
 function SideDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -69,20 +69,38 @@ export default function Layout({ children }) {
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     // clean up code
-    window.removeEventListener('scroll', onScroll);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollUpHandler = e => {
+  const scrollUpHandler = (e) => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
-    })
-  }
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <header className={styles.header}>
+        <nav>
+          <ul>
+            <li>
+              {" "}
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="Picture of the author"
+                  width="100px"
+                  height="50px"
+                />
+              </Link>
+            </li>
+            <li><Link href="/servicios"style={{ textDecoration: 'none' }}>Servicios</Link></li>
+            <li><Link href="/contacto" style={{ textDecoration: 'none' }}>Contacto</Link></li>
+           <li> <Link href="/nosotros" style={{ textDecoration: 'none' }}>Nosotros</Link></li>
+          </ul>
+        </nav>
         <div className={styles.draw}>
           <SideDrawer />
           <div className={styles.home}>
@@ -104,19 +122,22 @@ export default function Layout({ children }) {
           <div className={styles.social}>
             <SocialIcon
               url="https://facebook.com"
-              fgColor={'white'}
-              style={{ height: 35, width: 35, margin: '1rem' }}
+              target="_blank"   
+              fgColor={"white"}
+              style={{ height: 35, width: 35, margin: "1rem" }}
             />
             <SocialIcon
               url="https://instagram.com"
-              fgColor={'white'}
-              bgColor={'#9342f5'}
-              style={{ height: 35, width: 35, margin: '1rem' }}
+              target="_blank"   
+              fgColor={"white"}
+              bgColor={"#9342f5"}
+              style={{ height: 35, width: 35, margin: "1rem" }}
             />
             <SocialIcon
               url="https://whatsapp.com"
-              fgColor={'white'}
-              style={{ height: 35, width: 35, margin: '1rem' }}
+              target="_blank"   
+              fgColor={"white"}
+              style={{ height: 35, width: 35, margin: "1rem" }}
             />
           </div>
           <div className={styles.logo}>Made with ❤️ by MCG</div>
@@ -124,11 +145,26 @@ export default function Layout({ children }) {
         <div className={styles.floatButton}>
           <SocialIcon
             url="https://whatsapp.com"
-            fgColor={'white'}
+            target="_blank"   
+
+            fgColor={"white"}
             style={{ height: 45, width: 45, margin: 0 }}
           />
         </div>
-        {offset ? <div className={styles.floatButtonLeft} onClick={scrollUpHandler} > <IconButton icon={<ArrowUpIcon />} isRound size={'md'} colorScheme='black'   variant='outline' /> </div> : ''}
+        {offset ? (
+          <div className={styles.floatButtonLeft} onClick={scrollUpHandler}>
+            {" "}
+            <IconButton
+              icon={<ArrowUpIcon />}
+              isRound
+              size={"md"}
+              colorScheme="black"
+              variant="outline"
+            />{" "}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
