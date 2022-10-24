@@ -108,9 +108,9 @@
   display: flex;
   flex-wrap: wrap;
   flex: 1;
-  padding: 1rem 0;
-  border-top: 1px solid #ccc;
+  padding: 0 0 1rem 0;
   justify-content: center;
+  background-color:#1d1c14;
   align-items: center;
 }
 
@@ -179,10 +179,7 @@ h2.title {
   font-size: 1.5rem;
 }
 
-.contactForm {
-  background-color: #ccc;
-  width: 100%;
-}
+
 .contact {
   width: 90%;
   margin: 1rem auto;
@@ -281,6 +278,11 @@ h2.title {
     display: none;
   }
 
+  .FormControl {
+    width: 70%;
+    margin: 0 auto;
+}
+ 
   header.header nav{
     display: block;
     padding: 0.1rem;
@@ -297,11 +299,18 @@ h2.title {
     font-size: 1.5rem;
     cursor: pointer;
     opacity: 0.6;
-    transition: all 1s ease-in;
+    transition: all 0.5s ease-out;
 
   }
   .header nav ul li:hover{
     opacity: 1;
+  }
+  .serviceContainer {
+    background: #ccc;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    text-align: center;
   }
   div.banner{
 display: flex;
