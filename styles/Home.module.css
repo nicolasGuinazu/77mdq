@@ -195,7 +195,15 @@ h2.title {
   position: fixed;
   bottom: 4.5vw;
   right: 3vw;
+  animation:pop 1s ease-out
 }
+@keyframes pop {
+  50%
+  {transform: scale(1.2);}
+  
+  
+}
+
 .floatButtonLeft{
 
   position: fixed;
