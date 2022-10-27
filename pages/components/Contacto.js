@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/Home.module.css";
+import {db} from "../../firebase/firebase";
+import {collection,addDoc } from 'firebase/firestore'
 import {
   Button,
   Input,
@@ -21,6 +23,15 @@ export default function Contacto({ contactPage }) {
     date: "",
     paxAmmount: "",
   });
+
+  const dbSave = async(data)=>{
+    try {
+      await addDoc(collection(db, "form"), data);
+    } catch (e) {
+
+    }
+  }
+
 
   const submitHandler = (e) => {
     let err = {};
@@ -103,6 +114,8 @@ export default function Contacto({ contactPage }) {
       }
     }
     if (count == 0 && !sent) {
+      let date=new Date()
+      dbSave({...inputs,date})
       toast({
         title: "Gracias por contactarnos!",
         description:
