@@ -1,5 +1,5 @@
 import styles from "../../styles/Home.module.css";
-import logo from "../../public/download.png";
+import logo from "./download.png"
 import Image from "next/image";
 import {
   Drawer,
