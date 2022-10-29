@@ -7,12 +7,69 @@
   text-align: center;
   flex-grow: 1;
   margin-right: 1rem;
-  margin-bottom: 1rem;
 }
-.header nav{
+.header nav {
   display: none;
 }
+.aboutDescription {
+  text-align: justify;
+  margin: 0 1rem;
+}
+.aboutHome {
+  animation: appear ease 1s;
+  -webkit-animation: appear ease 1s;
+  -moz-animation: appear ease 1s;
+  -o-animation: appear ease 1s;
+  -ms-animation: appear ease 1s;
+}
 
+.aboutHide {
+  opacity: 0.3;
+}
+@keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes appear {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .banner {
   animation: fadeIn ease 5s;
   -webkit-animation: fadeIn ease 10s;
@@ -21,30 +78,50 @@
   -ms-animation: fadeIn ease 10s;
 }
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-.banner img{
+.banner img {
   max-width: 100%;
 }
 .container {
@@ -53,10 +130,9 @@
 }
 .header {
   background-color: #fff;
-  padding-top: 0.2rem;
 }
 .main {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   min-height: 100vh;
   flex: 1;
@@ -66,18 +142,23 @@
   background-color: #000;
 }
 .mainService {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   min-height: 100vh;
   background-color: #000;
 }
 .serviceContainer {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
   width: 100%;
   border-radius: 0.5rem;
   text-align: center;
 }
-.serviceContainer section p{
+.serviceContainer section p {
   margin: 1rem;
   border-radius: 0.5rem;
   text-align: left;
@@ -85,32 +166,30 @@
   font-weight: bolder;
   font-size: 1.5rem;
 }
-.serviceIcons{
+.serviceIcons {
   margin-bottom: 2rem;
 }
-.serviceIcons div{
+.serviceIcons div {
   padding: 1rem;
   display: flex;
   justify-content: space-around;
   font-size: 2rem;
 }
-.serviceIcons div div{
+.serviceIcons div div {
   flex-direction: column;
   display: flex;
-  align-items:center ;
+  align-items: center;
   margin: 0;
-
 }
-.serviceIcons div div p{
+.serviceIcons div div p {
   font-size: 1rem;
-
 }
-.sectionArticle{
+.sectionArticle {
   margin-top: 10vh;
 }
 
-.sectionArticleContact{
-  margin: 15vh  0 15vh;
+.sectionArticleContact {
+  margin: 15vh 0 15vh;
 }
 
 .footer {
@@ -119,16 +198,15 @@
   flex: 1;
   padding: 0 0 1rem 0;
   justify-content: center;
-  background-color:#1d1c14;
+  background-color: #1d1c14;
   align-items: center;
 }
 
-.unitContainer{
+.unitContainer {
   margin-top: 4rem;
 }
 
-
-.unitContainer h2.title{
+.unitContainer h2.title {
   margin-bottom: 2rem;
 }
 
@@ -155,10 +233,10 @@
   line-height: 1.15;
   font-size: 3rem;
 }
-.about{
-text-align: justify;
-font-size: 1rem;
-padding: 1rem;
+.about {
+  text-align: justify;
+  font-size: 1rem;
+  padding: 1rem;
 }
 .titleService {
   padding-top: 1rem;
@@ -166,7 +244,7 @@ padding: 1rem;
   line-height: 1.15;
   font-size: 3rem;
 }
-.contactTitle{
+.contactTitle {
   margin-top: 1rem;
   line-height: 1.15;
   font-size: 3rem;
@@ -188,7 +266,6 @@ h2.title {
   font-size: 1.5rem;
 }
 
-
 .contact {
   width: 90%;
   margin: 2rem auto;
@@ -200,22 +277,19 @@ h2.title {
   margin: 1rem auto;
   width: 80%;
 }
-.floatButton{
-
+.floatButton {
   position: fixed;
   bottom: 4.5vw;
   right: 3vw;
-  animation:pop 1s ease-out
+  animation: pop 1s ease-out;
 }
 @keyframes pop {
-  50%
-  {transform: scale(1.2);}
-
-
+  50% {
+    transform: scale(1.2);
+  }
 }
 
-.floatButtonLeft{
-
+.floatButtonLeft {
   position: fixed;
   bottom: 5vw;
   left: 3vw;
@@ -286,8 +360,9 @@ h2.title {
 }
 
 .draweritem {
-/*   border-bottom: 1px solid #ccc;
- */  width: 70%;
+  /*   border-bottom: 1px solid #ccc;
+ */
+  width: 70%;
   margin-top: 0.5rem;
 }
 
@@ -299,27 +374,26 @@ h2.title {
   .FormControl {
     width: 70%;
     margin: 0 auto;
-}
+  }
 
-  header.header nav{
+  header.header nav {
     display: block;
     padding: 0.1rem;
   }
-  header.header nav ul{
+  header.header nav ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
 
-  .header nav ul li{
+  .header nav ul li {
     list-style: none;
     font-size: 1.5rem;
     cursor: pointer;
     opacity: 0.6;
     transition: all 0.5s ease-out;
-
   }
-  .header nav ul li:hover{
+  .header nav ul li:hover {
     opacity: 1;
   }
   .serviceContainer {
@@ -329,9 +403,19 @@ h2.title {
     border-radius: 0.5rem;
     text-align: center;
   }
-  div.banner{
-display: flex;
-justify-content: center;  }
+  div.banner {
+    display: flex;
+    justify-content: center;
+  }
+}
+.aboutDescription {
+  text-align: center;
+  margin: 1rem auto;
+}
+.aboutHome {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
