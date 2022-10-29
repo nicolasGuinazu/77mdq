@@ -57,10 +57,12 @@ export default function Home() {
         <title>77 mdq</title>
         <meta name="robots" content="all" />
         <meta property="og:title" content="77 mdq" />
+        <meta property="og:description" content="Empresa de transporte turistico de Mar del Plata" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://mdq-landing.web.app/" />
         <meta
           property="og:image"
+          itemprop="image"
           content="https://mdq-landing.web.app/_next/static/media/download.29733d08.png?imwidth=128"
         />
       </Head>
