@@ -1,14 +1,15 @@
 import styles from '../styles/Home.module.css';
 import { Box } from '@chakra-ui/react';
 import Contacto from './components/Contacto';
-import { Image } from '@chakra-ui/react';
+import { Image,Button,  Link,
+} from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Head from 'next/head';
 
 export default function Home() {
   // If you want to use your own Selectors look up the Advancaed Story book examples
-  const ImageSlider = ({ slides, show, auto }) => {
+  const ImageSlider = ({ slides, show, auto,showIndi }) => {
     return (
       <Carousel
         infiniteLoop
@@ -16,6 +17,7 @@ export default function Home() {
         showArrows={show}
         autoPlay={auto}
         showThumbs={false}
+        showIndicators={showIndi}
       >
         {slides.map((slide, i) => {
           return (
@@ -64,21 +66,34 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Box w="100%" p={0} color="white">
-          <ImageSlider slides={SlideData} show={true} auto={false} />
+          <ImageSlider slides={SlideData} show={true} auto={true} />
         </Box>
         <div>
           <section>
             <article className={styles.sectionArticle}>
-              <h2 className={styles.title}>Nosotros</h2>
+              <h2 className={styles.title}>Servicios</h2>
               <Box w="100%" p={4} color="white">
-                <ImageSlider slides={SlideData} show={false} auto={true} />
+                <ImageSlider slides={SlideData} show={true} auto={false} showIndi={false}/>
               </Box>
+              <div className={styles.submitButton}>
+          <Button  colorScheme="blue" type="submit">
+          <Link href="/servicios" style={{ textDecoration: 'none' }}>Ver más</Link>
+          </Button>
+        </div>
             </article>
             <article className={styles.sectionArticle}>
-              <h2 className={styles.title}>Unidades</h2>
+              <h2 className={styles.title}>Nosotros</h2>
               <Box w="100%" p={4} color="white">
-                <ImageSlider slides={SlideData} show={false} auto={true} />
+              <div className={styles.banner}>
+          <img src="https://static5.depositphotos.com/1000847/496/i/450/depositphotos_4961954-stock-photo-white-touristic-bus-motion-highway.jpg"></img>
+        </div>
               </Box>
+
+        <div className={styles.submitButton}>
+          <Button mt={5} colorScheme="blue" type="submit">
+          <Link href="/nosotros" style={{ textDecoration: 'none' }}>Ver más</Link>
+          </Button>
+        </div>
             </article>
             <article className={styles.sectionArticleContact}>
               <h2 className={styles.title}>Contacto</h2>

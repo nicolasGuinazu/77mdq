@@ -27,7 +27,7 @@ function SideDrawer() {
         colorScheme="white"
         onClick={onOpen}
         size="lg"
-        icon={<HamburgerIcon color="black" boxSize="2em" />}
+        icon={<HamburgerIcon color="black" boxSize="2em"/>}
       ></IconButton>
       <Drawer
         isOpen={isOpen}
@@ -86,7 +86,6 @@ export default function Layout({ children }) {
         <nav>
           <ul>
             <li>
-              {" "}
               <Link href="/">
                 <Image
                   src={logo}
@@ -122,20 +121,20 @@ export default function Layout({ children }) {
           <div className={styles.social}>
             <SocialIcon
               url="https://facebook.com"
-              target="_blank"   
+              target="_blank"
               fgColor={"white"}
               style={{ height: 35, width: 35, margin: "1rem" }}
             />
             <SocialIcon
               url="https://instagram.com"
-              target="_blank"   
+              target="_blank"
               fgColor={"white"}
               bgColor={"#9342f5"}
               style={{ height: 35, width: 35, margin: "1rem" }}
             />
             <SocialIcon
               url="https://whatsapp.com"
-              target="_blank"   
+              target="_blank"
               fgColor={"white"}
               style={{ height: 35, width: 35, margin: "1rem" }}
             />
@@ -145,7 +144,7 @@ export default function Layout({ children }) {
         <div className={styles.floatButton}>
           <SocialIcon
             url="https://whatsapp.com"
-            target="_blank"   
+            target="_blank"
 
             fgColor={"white"}
             style={{ height: 45, width: 45, margin: 0 }}
