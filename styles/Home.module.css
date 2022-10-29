@@ -15,14 +15,6 @@
   text-align: justify;
   margin: 0 1rem;
 }
-.aboutHome {
-  animation: appear ease 1s;
-  -webkit-animation: appear ease 1s;
-  -moz-animation: appear ease 1s;
-  -o-animation: appear ease 1s;
-  -ms-animation: appear ease 1s;
-}
-
 .aboutHide {
   opacity: 0.3;
 }
@@ -254,7 +246,12 @@ h2.title {
   line-height: 1.15;
   font-size: 1.9rem;
 }
-
+h1.title {
+  margin-bottom: 1rem;
+}
+div.serviceBanner {
+  background-color: #000;
+}
 .title,
 .description {
   text-align: center;
@@ -358,7 +355,16 @@ h2.title {
     transform: translateX(-300%);
   }
 }
-
+.aboutHome {
+  animation: appear ease 1s;
+  -webkit-animation: appear ease 1s;
+  -moz-animation: appear ease 1s;
+  -o-animation: appear ease 1s;
+  -ms-animation: appear ease 1s;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
 .draweritem {
   /*   border-bottom: 1px solid #ccc;
  */
@@ -407,15 +413,20 @@ h2.title {
     display: flex;
     justify-content: center;
   }
-}
-.aboutDescription {
-  text-align: center;
-  margin: 1rem auto;
-}
-.aboutHome {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  div.serviceBanner {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .aboutDescription {
+    text-align: center;
+    margin: 1rem auto;
+  }
+  .aboutHome {
+    width: 80%;
+  }
+  .aboutHome img {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {

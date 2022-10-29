@@ -102,6 +102,7 @@ export default function Home() {
             </article>
             <article className={styles.sectionArticle}>
               <h2 className={styles.title}>Servicios</h2>
+              <div className={styles.serviceBanner}>
               <Box w="100%" p={4} color="white">
                 <ImageSlider
                   slides={SlideData}
@@ -110,6 +111,8 @@ export default function Home() {
                   showIndi={false}
                 />
               </Box>
+              </div>
+         
               <div className={styles.submitButton}>
                 <Button colorScheme="blue" type="submit">
                   <Link href="/servicios" style={{ textDecoration: "none" }}>
