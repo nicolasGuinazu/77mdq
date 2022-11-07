@@ -114,8 +114,8 @@ export default function Contacto({ contactPage }) {
       }
     }
     if (count == 0 && !sent) {
-      let date=new Date()
-      dbSave({...inputs,date})
+      let contactDate=new Date()
+      dbSave({...inputs,contactDate})
       toast({
         title: "Gracias por contactarnos!",
         description:
